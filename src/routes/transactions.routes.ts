@@ -1,4 +1,4 @@
-import { Router, json } from 'express';
+import { Router } from 'express';
 import multer from 'multer';
 
 import { getCustomRepository } from 'typeorm';
@@ -48,7 +48,8 @@ transactionsRouter.delete('/:id', async (request, response) => {
   return response.status(204).send();
 });
 
-transactionsRouter.post('/import',
+transactionsRouter.post(
+  '/import',
   upload.single('file'),
   async (request, response) => {
     const importTransactions = new ImportTransactionsService();
